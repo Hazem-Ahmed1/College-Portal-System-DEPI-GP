@@ -1,4 +1,8 @@
+using BusinessLogicLayer.StudentService;
 using DataAccessLayer.Entities;
+using DataAccessLayer.Interfaces;
+using DataAccessLayer.Repositories;
+using DataAccessLayer.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 
 namespace College_portal_System
@@ -14,6 +18,9 @@ namespace College_portal_System
             builder.Services.AddDbContext<AppDbContext>(option =>
                 option.UseSqlServer(builder.Configuration.GetConnectionString("default"))
             );
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IStudentRepo,StudentRepo>();
+            builder.Services.AddScoped<IStudentService,StudentService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

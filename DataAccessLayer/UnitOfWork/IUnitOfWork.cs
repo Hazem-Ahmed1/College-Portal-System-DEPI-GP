@@ -12,7 +12,11 @@ namespace DataAccessLayer.UnitOfWork
     {
         //Add your Repo here
         //It will cause a compiler error because there is no entity calles (Student)
-        IBaseRepository<Student>Students { get; }
+        IStudentRepo StudentRepo { get; }
+        IBaseRepository<ApplicationUser> ApplicationUserRepo { get; }
+        IBaseRepository<CourseEnrollment> CourseEnrollmentRepo { get; }
+        IBaseRepository<Department> DepartmentRepo { get; }
+        IBaseRepository<Course> CourseRepo { get; }
         void Commit();
     }
 }
